@@ -2,6 +2,7 @@
 
 ## Install
 
+### Linux
 - Remove all previous nvim directory
 
 ```sh
@@ -11,15 +12,24 @@ sudo rm -r ~/.local/state/nvim/
 ```
 
 - Clone the repository
-
 ```sh
   git clone https://github.com/itami12354/nvim ~/.config/nvim/
 ```
 
 - Launch Neovim
-
 ```sh
   nvim
+```
+
+### Windows
+- Clone the repository
+```ps1
+git clone https://github.com/itami12354/nvim $HOME\AppData\Local\nvim
+```
+
+- Launch Neovim
+```ps1
+nvim
 ```
 
 ## Plugins
