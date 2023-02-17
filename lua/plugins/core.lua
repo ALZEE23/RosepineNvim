@@ -1,8 +1,10 @@
 return {
+  -- Set colorscheme
   { "LazyVim/LazyVim", opts = {
     colorscheme = "catppuccin",
   } },
 
+  -- Vim Motion
   {
     "phaazon/hop.nvim",
     name = "hop.nvim",
@@ -24,6 +26,7 @@ return {
     end,
   },
 
+  -- Surround texts
   {
     "kylechui/nvim-surround",
     name = "nvim-surround",
@@ -34,19 +37,21 @@ return {
     end,
   },
 
+  -- Easy navigation out of braces and quotation marks
+  -- Read the documentation for more info on these options
   {
     "abecodes/tabout.nvim",
     name = "tabout.nvim",
     config = function()
       require("tabout").setup({
         tabkey = "<Tab>",
-        backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-        act_as_tab = true, -- shift content if tab out is not possible
-        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-        default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-        default_shift_tab = "<C-d>", -- reverse shift default action,
-        enable_backwards = true, -- well ...
-        completion = true, -- if the tabkey is used in a completion pum
+        backwards_tabkey = "<S-Tab>",
+        act_as_tab = true,
+        act_as_shift_tab = false,
+        default_tab = "<C-t>",
+        default_shift_tab = "<C-d>",
+        enable_backwards = true,
+        completion = true,
         tabouts = {
           { open = "'", close = "'" },
           { open = '"', close = '"' },
@@ -69,13 +74,15 @@ return {
     end,
   },
 
+  -- Remove default options
   {
     "L3MON4D3/LuaSnip",
     keys = function()
       return {}
     end,
   },
-  -- then: setup supertab in cmp
+
+  -- Use Visual Studio code like mapping for autocompletion
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -98,6 +105,60 @@ return {
           end
         end, { "i", "s" }),
       })
+    end,
+  },
+
+  -- Automatically highlight colors in nvim
+  {
+    "brenoprata10/nvim-highlight-colors",
+    name = "nvim-highlight-colors",
+    lazy = false,
+    config = function()
+      require("nvim-highlight-colors").setup({
+        enable_tailwind = true,
+        enable_named_colors = true,
+      })
+    end,
+  },
+
+  -- Comment out code with keybindings
+  {
+    "numToStr/Comment.nvim",
+    name = "Comment.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = function()
+      require("Comment").setup({
+        padding = true,
+        sticky = false,
+        ignore = nil,
+        toggler = {
+          line = "<leader>/",
+          block = "<leader>\\",
+        },
+        opleader = {
+          line = "<leader>/",
+          block = "<leader>\\",
+        },
+        mappings = {
+          basic = true,
+          extra = true,
+        },
+        pre_hook = nil,
+        post_hook = nil,
+      })
+    end,
+  },
+
+  -- Add cats to nvim (very important)
+  {
+    "giusgad/pets.nvim",
+    name = "pets.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    dependencies = { "edluffy/hologram.nvim" },
+    config = function()
+      require("pets").setup({})
     end,
   },
 }
