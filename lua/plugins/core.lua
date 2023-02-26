@@ -151,14 +151,14 @@ return {
   },
 
   -- Add cats to nvim (very important)
-  {
-    "giusgad/pets.nvim",
-    name = "pets.nvim",
-    lazy = true,
-    event = "VeryLazy",
-    dependencies = { "edluffy/hologram.nvim" },
-    config = function()
-      require("pets").setup({})
-    end,
-  },
+  -- {
+  --   "giusgad/pets.nvim",
+  --   name = "pets.nvim",
+  --   lazy = true,
+  --   event = "VeryLazy",
+  --   dependencies = { "edluffy/hologram.nvim" },
+  --   config = function()
+  --     require("pets").setup({})
+  --   end,
+  -- },
 }
